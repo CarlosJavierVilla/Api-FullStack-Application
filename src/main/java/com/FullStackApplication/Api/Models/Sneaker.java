@@ -1,4 +1,4 @@
-package com.FullStackApplication.Api.models;
+package com.FullStackApplication.Api.Models;
 
 public class Sneaker {
     private long id;

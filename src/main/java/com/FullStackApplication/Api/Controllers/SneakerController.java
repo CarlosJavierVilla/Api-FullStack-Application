@@ -1,7 +1,7 @@
 package com.FullStackApplication.Api.Controllers;
 
 
-import com.FullStackApplication.Api.models.Sneaker;
+import com.FullStackApplication.Api.Models.Sneaker;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
