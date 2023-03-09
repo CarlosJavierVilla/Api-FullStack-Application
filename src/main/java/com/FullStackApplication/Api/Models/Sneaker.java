@@ -5,13 +5,15 @@ public class Sneaker {
     private String brand;
     private String model;
     private long price;
+    private String img;
 
 
-    public Sneaker(long id, String name, String model, long price) {
+    public Sneaker(long id, String name, String model, long price, String img) {
         this.id = id;
         this.brand = name;
         this.model = model;
         this.price = price;
+        this.img = img;
     }
 
     public Sneaker() {
@@ -32,6 +34,7 @@ public class Sneaker {
     public long getPrice() {
         return price;
     }
+    public String getImg(){return img;}
 
     public void setId(long id) {
         this.id = id;
@@ -48,4 +51,5 @@ public class Sneaker {
     public void setPrice(long price) {
         this.price = price;
     }
+    public  void setImg(String  img){this.img = img;}
 }
