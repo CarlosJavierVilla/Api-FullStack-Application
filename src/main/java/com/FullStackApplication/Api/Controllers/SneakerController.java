@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/sneakers")
 public class SneakerController {
 
@@ -25,12 +26,6 @@ public class SneakerController {
                     new Sneaker(10,"Dolce & Gabbana","Wave corte medio en punto elástico", 795, "https://www.dolcegabbana.com/dw/image/v2/AAGA_PRD/on/demandware.static/-/Sites-15/default/dw0f771657/images/zoom/CK2116AE396_8B969_0.jpg")
             )
     );
-
-    @GetMapping("/check") // Just a checking
-    public String check() {
-        return "ok";
-    }
-
     @GetMapping
     public List<Sneaker> getAll() {
         return this.sneakerDB;
@@ -43,11 +38,11 @@ public class SneakerController {
               .findFirst().get();
     }
 
+    //en proceso
     @PostMapping
     public Sneaker create(@RequestBody Sneaker sneaker) {
         this.sneakerDB.add(sneaker);
         return sneaker;
-
     }
 
 }

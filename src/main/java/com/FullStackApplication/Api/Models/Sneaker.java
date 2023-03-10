@@ -8,9 +8,9 @@ public class Sneaker {
     private String img;
 
 
-    public Sneaker(long id, String name, String model, long price, String img) {
+    public Sneaker(long id, String brand, String model, long price, String img) {
         this.id = id;
-        this.brand = name;
+        this.brand = brand;
         this.model = model;
         this.price = price;
         this.img = img;
