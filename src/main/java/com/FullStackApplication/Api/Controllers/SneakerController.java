@@ -55,5 +55,19 @@ public class SneakerController {
         return sneakerToDelete;
 
     }
+    @PutMapping("{id}")
+    public Sneaker updateById(@PathVariable long id, @RequestBody Sneaker sneaker){
+        for (Sneaker item: this.sneakerDB){
+            if (item.getId() == id){
+                item.setBrand(sneaker.getBrand());
+                item.setModel(sneaker.getModel());
+                item.setPrice(sneaker.getPrice());
+                item.setImg(sneaker.getImg());
+
+                return item;
+            }
+        }
+        return null;
+    }
 
 }
