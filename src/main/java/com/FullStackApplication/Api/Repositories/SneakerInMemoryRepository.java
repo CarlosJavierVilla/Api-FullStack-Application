@@ -1,9 +1,7 @@
 package com.FullStackApplication.Api.Repositories;
 
 import com.FullStackApplication.Api.Models.Sneaker;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
@@ -11,7 +9,9 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-public class SneakerRepository {
+@Repository
+public class SneakerInMemoryRepository implements ISneakerRepository {
+
     List<Sneaker> sneakerDB = new ArrayList<>(
             List.of(
                     new Sneaker("Adidas","Forum Low", 110.00d, "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/b7beee7c32d4438aaba3acb6001c2e7b_9366/Zapatilla_Forum_Low_Blanco_FY7757_01_standard.jpg"),
@@ -28,18 +28,22 @@ public class SneakerRepository {
             )
     );
 
+    @Override
     public List<Sneaker> findAll(){
         return this.sneakerDB;
     }
+    @Override
     public Sneaker findById(UUID id){
         return this.sneakerDB.stream()
                 .filter(item -> item.getId().equals(id))
                 .findFirst().get();
     }
+    @Override
     public Sneaker createSneaker(Sneaker sneaker){
         this.sneakerDB.add(sneaker);
         return sneaker;
     }
+    @Override
     public Sneaker deleteSneaker(UUID id){
         var sneakerToDelete = this.sneakerDB.stream()
                 .filter(item->item.getId().equals(id))
@@ -47,6 +51,7 @@ public class SneakerRepository {
         this.sneakerDB.remove(sneakerToDelete);
         return sneakerToDelete;
     }
+    @Override
     public Sneaker updateSneaker(UUID id, Sneaker sneaker){
         for (Sneaker item: this.sneakerDB){
             if (item.getId().equals(id)){
@@ -63,6 +68,7 @@ public class SneakerRepository {
 
 
     // Arreglar
+    @Override
     public List<Sneaker> searchBy(@RequestParam(required = false) String brand){
         if(brand == null) return this.sneakerDB;
         var filteredSneakers = this.sneakerDB.stream()
