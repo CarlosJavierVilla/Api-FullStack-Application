@@ -2,10 +2,13 @@ package com.FullStackApplication.Api.Controllers;
 
 
 import com.FullStackApplication.Api.Models.Sneaker;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
@@ -32,10 +35,15 @@ public class SneakerController {
     }
 
     @GetMapping("/{id}")
-    public Sneaker getById(@PathVariable long id) {
-        return this.sneakerDB.stream()
+    public ResponseEntity<Sneaker> getById(@PathVariable long id) {
+
+         var sneakerOptional = this.sneakerDB.stream()
               .filter(item -> item.getId() == id)
-              .findFirst().get();
+              .findFirst();
+
+        if(sneakerOptional.isEmpty()) return  ResponseEntity.notFound().build();
+        return new ResponseEntity<>(sneakerOptional.get(), HttpStatus.OK);
+
     }
 
 
@@ -69,5 +77,15 @@ public class SneakerController {
         }
         return null;
     }
+
+    @GetMapping("search")
+    public List<Sneaker> searchBy(@RequestParam(required = false) String brand){
+        if(brand == null) return this.sneakerDB;
+        var filteredSneakers = this.sneakerDB.stream()
+                .filter(item-> item.getBrand().contains(brand.toLowerCase()))
+                .collect(Collectors.toList());
+        return filteredSneakers;
+    }
+
 
 }
