@@ -45,4 +45,15 @@ public class SneakerController {
         return sneaker;
     }
 
+
+    @DeleteMapping("{id}")
+    public Sneaker deleteById(@PathVariable long id){
+        var sneakerToDelete = this.sneakerDB.stream()
+                .filter(item->item.getId() == id)
+                .findFirst().get();
+        this.sneakerDB.remove(sneakerToDelete);
+        return sneakerToDelete;
+
+    }
+
 }
