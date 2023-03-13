@@ -18,6 +18,8 @@ import java.util.stream.Collectors;
 public class SneakerController {
 
     private final SneakerRepository sneakerRepository = new SneakerRepository();
+
+    /*
     List<Sneaker> sneakerDB = new ArrayList<>(
             List.of(
                     new Sneaker("Adidas","Forum Low", 110.0d, "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/b7beee7c32d4438aaba3acb6001c2e7b_9366/Zapatilla_Forum_Low_Blanco_FY7757_01_standard.jpg"),
@@ -33,6 +35,8 @@ public class SneakerController {
                     new Sneaker("test","Wave corte medio en punto elástico", 795.0d, "https://www.dolcegabbana.com/dw/image/v2/AAGA_PRD/on/demandware.static/-/Sites-15/default/dw0f771657/images/zoom/CK2116AE396_8B969_0.jpg")
             )
     );
+    */
+
     @GetMapping
     public List<Sneaker> getAll() {
         return this.sneakerRepository.findAll();
@@ -74,11 +78,7 @@ public class SneakerController {
 
     @GetMapping("search")
     public List<Sneaker> searchBy(@RequestParam(required = false) String brand){
-        if(brand == null) return this.sneakerDB;
-        var filteredSneakers = this.sneakerDB.stream()
-                .filter(item-> item.getBrand().contains(brand.toLowerCase()))
-                .collect(Collectors.toList());
-        return filteredSneakers;
+        return sneakerRepository.searchBy(brand);
     }
 
 

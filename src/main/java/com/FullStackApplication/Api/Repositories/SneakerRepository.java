@@ -1,12 +1,15 @@
 package com.FullStackApplication.Api.Repositories;
 
 import com.FullStackApplication.Api.Models.Sneaker;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class SneakerRepository {
     List<Sneaker> sneakerDB = new ArrayList<>(
@@ -56,5 +59,12 @@ public class SneakerRepository {
             }
         }
         return null;
+    }
+    public List<Sneaker> searchBy(@RequestParam(required = false) String brand){
+        if(brand == null) return this.sneakerDB;
+        var filteredSneakers = this.sneakerDB.stream()
+                .filter(item-> item.getBrand().contains(brand.toLowerCase()))
+                .collect(Collectors.toList());
+        return filteredSneakers;
     }
 }
