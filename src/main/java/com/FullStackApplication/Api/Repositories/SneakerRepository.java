@@ -53,7 +53,7 @@ public class SneakerRepository {
                 item.setBrand(sneaker.getBrand());
                 item.setModel(sneaker.getModel());
                 item.setPrice(sneaker.getPrice());
-                item.setImg(sneaker.getImg());
+                item.setImg(sneaker.getImg());;
 
                 return item;
             }

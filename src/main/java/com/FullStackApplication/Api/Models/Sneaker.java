@@ -19,6 +19,7 @@ public class Sneaker {
     }
 
     public Sneaker() {
+        this.id = UUID.randomUUID();
     }
 
     public UUID getId() {
