@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/sneakers")
 public class SneakerController {
 
@@ -38,7 +38,7 @@ public class SneakerController {
               .findFirst().get();
     }
 
-    //en proceso
+
     @PostMapping
     public Sneaker create(@RequestBody Sneaker sneaker) {
         this.sneakerDB.add(sneaker);
