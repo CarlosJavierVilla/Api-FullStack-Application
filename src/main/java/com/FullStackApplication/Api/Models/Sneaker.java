@@ -1,15 +1,17 @@
 package com.FullStackApplication.Api.Models;
 
+import java.util.UUID;
+
 public class Sneaker {
-    private long id;
+    private UUID id;
     private String brand;
     private String model;
-    private long price;
+    private Double price;
     private String img;
 
 
-    public Sneaker(long id, String brand, String model, long price, String img) {
-        this.id = id;
+    public Sneaker(String brand, String model, Double price, String img) {
+        this.id = UUID.randomUUID();
         this.brand = brand;
         this.model = model;
         this.price = price;
@@ -19,8 +21,8 @@ public class Sneaker {
     public Sneaker() {
     }
 
-    public long getId() {
-        return id;
+    public UUID getId() {
+        return UUID.randomUUID();
     }
 
     public String getBrand() {
@@ -31,13 +33,13 @@ public class Sneaker {
         return model;
     }
 
-    public long getPrice() {
+    public Double getPrice() {
         return price;
     }
     public String getImg(){return img;}
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId(UUID id) {
+        this.id = UUID.randomUUID();
     }
 
     public void setBrand(String brand) {
@@ -48,7 +50,7 @@ public class Sneaker {
         this.model = model;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
     public  void setImg(String  img){this.img = img;}
