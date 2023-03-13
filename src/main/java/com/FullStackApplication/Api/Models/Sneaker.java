@@ -22,7 +22,7 @@ public class Sneaker {
     }
 
     public UUID getId() {
-        return UUID.randomUUID();
+        return id;
     }
 
     public String getBrand() {
@@ -38,8 +38,9 @@ public class Sneaker {
     }
     public String getImg(){return img;}
 
+
     public void setId(UUID id) {
-        this.id = UUID.randomUUID();
+        this.id = id;
     }
 
     public void setBrand(String brand) {
