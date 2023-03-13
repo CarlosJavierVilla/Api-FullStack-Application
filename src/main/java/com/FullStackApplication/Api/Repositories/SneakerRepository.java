@@ -60,6 +60,9 @@ public class SneakerRepository {
         }
         return null;
     }
+
+
+    // Arreglar
     public List<Sneaker> searchBy(@RequestParam(required = false) String brand){
         if(brand == null) return this.sneakerDB;
         var filteredSneakers = this.sneakerDB.stream()

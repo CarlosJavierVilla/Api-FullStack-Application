@@ -76,6 +76,9 @@ public class SneakerController {
         return sneakerRepository.updateSneaker(id, sneaker);
     }
 
+
+
+    // Arreglar
     @GetMapping("search")
     public List<Sneaker> searchBy(@RequestParam(required = false) String brand){
         return sneakerRepository.searchBy(brand);
