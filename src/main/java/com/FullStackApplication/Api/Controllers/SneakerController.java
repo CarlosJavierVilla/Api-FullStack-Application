@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+//@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin("*")
 @RequestMapping("/sneakers")
 public class SneakerController {
 
