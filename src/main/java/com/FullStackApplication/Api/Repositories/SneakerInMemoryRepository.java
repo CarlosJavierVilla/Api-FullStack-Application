@@ -35,7 +35,7 @@ public class SneakerInMemoryRepository implements ISneakerRepository {
     @Override
     public Sneaker findById(UUID id){
         return this.sneakerDB.stream()
-                .filter(item -> item.getId().equals(id))
+                .filter(item -> item.getUuid().equals(id))
                 .findFirst().get();
     }
     @Override
@@ -46,7 +46,7 @@ public class SneakerInMemoryRepository implements ISneakerRepository {
     @Override
     public Sneaker deleteSneaker(UUID id){
         var sneakerToDelete = this.sneakerDB.stream()
-                .filter(item->item.getId().equals(id))
+                .filter(item->item.getUuid().equals(id))
                 .findFirst().get();
         this.sneakerDB.remove(sneakerToDelete);
         return sneakerToDelete;
@@ -54,7 +54,7 @@ public class SneakerInMemoryRepository implements ISneakerRepository {
     @Override
     public Sneaker updateSneaker(UUID id, Sneaker sneaker){
         for (Sneaker item: this.sneakerDB){
-            if (item.getId().equals(id)){
+            if (item.getUuid().equals(id)){
                 item.setBrand(sneaker.getBrand());
                 item.setModel(sneaker.getModel());
                 item.setPrice(sneaker.getPrice());
