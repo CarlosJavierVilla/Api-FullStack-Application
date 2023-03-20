@@ -18,6 +18,7 @@ public class Sneaker {
     private Double price;
     private String img;
     private String description;
+    private Boolean highlights;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "admin_id")
