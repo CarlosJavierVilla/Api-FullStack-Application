@@ -1,6 +1,7 @@
 package com.FullStackApplication.Api.apiService.Controllers;
 
 
+import com.FullStackApplication.Api.domain.Dtos.SneakerRequest;
 import com.FullStackApplication.Api.domain.Models.Sneaker;
 import com.FullStackApplication.Api.domain.Services.SneakerService;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +33,7 @@ public class SneakerController {
     }
 
     @PostMapping
-    public ResponseEntity<Sneaker> addSneaker(@RequestBody Sneaker sneaker){
+    public ResponseEntity<Sneaker> addSneaker(@RequestBody SneakerRequest request){
         return ResponseEntity.ok(this.sneakerService.addSneaker(sneaker));
     }
 
@@ -41,11 +42,18 @@ public class SneakerController {
         this.sneakerService.deleteById(id);
     }
 
+
+
+
+
+
+
+
+
+
+
 /*
-    @DeleteMapping("{id}")
-    public Sneaker deleteById(@PathVariable Long id){
-        return sneakerRepository.deleteSneaker(id);
-    }
+
     @PutMapping("{id}")
     public Sneaker updateById(@PathVariable Long id, @RequestBody Sneaker sneaker){
         return sneakerRepository.updateSneaker(id, sneaker);

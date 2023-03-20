@@ -23,7 +23,8 @@ public class Sneaker {
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "admin_id")
     private Admin admin;
-
-
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 }
 
