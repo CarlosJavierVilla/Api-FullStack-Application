@@ -2,8 +2,10 @@ package com.FullStackApplication.Api.apiService.Controllers;
 
 
 import com.FullStackApplication.Api.domain.Dtos.SneakerRequest;
+import com.FullStackApplication.Api.domain.Models.Category;
 import com.FullStackApplication.Api.domain.Models.Sneaker;
 import com.FullStackApplication.Api.domain.Services.SneakerService;
+import com.FullStackApplication.Api.infrastructure.Repositories.ICategoryRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,9 +18,11 @@ import java.util.List;
 public class SneakerController {
 
     private final SneakerService sneakerService;
+    private final ICategoryRepository categoryRepository;
 
-    public SneakerController(SneakerService sneakerService) {
+    public SneakerController(SneakerService sneakerService, ICategoryRepository categoryRepository) {
         this.sneakerService = sneakerService;
+        this.categoryRepository = categoryRepository;
     }
 
 
@@ -27,6 +31,7 @@ public class SneakerController {
         return ResponseEntity.ok(this.sneakerService.findAll());
     }
 
+
     @GetMapping("/{id}")
     public ResponseEntity<Sneaker> getById(@PathVariable Long id) {
         return ResponseEntity.ok(this.sneakerService.findById(id));
@@ -34,7 +39,7 @@ public class SneakerController {
 
     @PostMapping
     public ResponseEntity<Sneaker> addSneaker(@RequestBody SneakerRequest request){
-        return ResponseEntity.ok(this.sneakerService.addSneaker(sneaker));
+        return ResponseEntity.ok(this.sneakerService.addSneaker(request));
     }
 
     @DeleteMapping("/{id}")

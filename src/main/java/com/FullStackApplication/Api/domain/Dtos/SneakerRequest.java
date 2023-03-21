@@ -9,6 +9,7 @@ public class SneakerRequest {
     private Double price;
     private String img;
     private String description;
+    private Boolean highlights;
     private Long categoryId;
 
 }
