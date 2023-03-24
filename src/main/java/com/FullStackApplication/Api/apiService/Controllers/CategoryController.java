@@ -1,11 +1,10 @@
 package com.FullStackApplication.Api.apiService.Controllers;
 
 import com.FullStackApplication.Api.domain.Models.Category;
+import com.FullStackApplication.Api.domain.Models.Sneaker;
 import com.FullStackApplication.Api.domain.Services.CategoryService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,5 +22,10 @@ public class CategoryController {
     @GetMapping("/categories")
     public List<Category> findAllCategories(){
         return categoryService.findAllCategories();
+    }
+
+    @GetMapping("/categories/{id}")
+    public ResponseEntity<Category> findCategoryById(@PathVariable Long id) {
+        return ResponseEntity.ok(this.categoryService.findCategoryById(id));
     }
 }

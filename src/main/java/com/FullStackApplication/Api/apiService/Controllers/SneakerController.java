@@ -31,11 +31,26 @@ public class SneakerController {
         return ResponseEntity.ok(this.sneakerService.findAll());
     }
 
-
     @GetMapping("/{id}")
     public ResponseEntity<Sneaker> getById(@PathVariable Long id) {
         return ResponseEntity.ok(this.sneakerService.findById(id));
     }
+
+    @GetMapping("/highlights")
+    public ResponseEntity<List<Sneaker>> findAllHighLights(){
+        return ResponseEntity.ok(this.sneakerService.findAllHighLights());
+    }
+
+    @GetMapping("category/adult")
+    public ResponseEntity<List<Sneaker>> findAdultSneakers(){
+        return ResponseEntity.ok(this.sneakerService.findAdultSneakers());
+    }
+
+    @GetMapping("category/kid")
+    public ResponseEntity<List<Sneaker>> findKidSneakers(){
+        return ResponseEntity.ok(this.sneakerService.findKidSneakers());
+    }
+
 
     @PostMapping
     public ResponseEntity<Sneaker> addSneaker(@RequestBody SneakerRequest request){

@@ -1,6 +1,7 @@
 package com.FullStackApplication.Api.domain.Services;
 
 import com.FullStackApplication.Api.domain.Dtos.SneakerRequest;
+import com.FullStackApplication.Api.domain.Models.Category;
 import com.FullStackApplication.Api.domain.Models.Sneaker;
 import com.FullStackApplication.Api.infrastructure.Repositories.ICategoryRepository;
 import com.FullStackApplication.Api.infrastructure.Repositories.ISneakerRepository;
@@ -29,6 +30,21 @@ public class SneakerService {
         if(sneakerOptional.isEmpty()) throw new RuntimeException("The product with id: " + id + " doesn't exist in our Data Base. Please try again with other id.");
         return sneakerOptional.get();
     }
+
+    //filtrado desde backend que devuelve los sneakers que sean highlight
+    public List<Sneaker> findAllHighLights(){
+        var sneakers = sneakerRepository.findByHighlightsTrue();
+        return sneakers;
+    }
+
+    public List<Sneaker> findAdultSneakers(){
+        return sneakerRepository.findByCategory_Id(1L);
+    }
+
+    public List<Sneaker> findKidSneakers(){
+        return sneakerRepository.findByCategory_Id(2L);
+    }
+
     public Sneaker addSneaker(SneakerRequest request) {
         var category = categoryRepository.findById(request.getCategoryId())
                 .orElseThrow(() -> new RuntimeException("This category doesn't exist. Please try again."));
