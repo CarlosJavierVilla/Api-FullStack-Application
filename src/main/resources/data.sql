@@ -40,14 +40,14 @@ INTO
   sneakers
   (brand, model, price, img, description, highlights, admin_id, category_id)
 VALUES
-  ('Adidas', 'Busenitz', 90, 'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/87e278ebf8cf4706a3bda7fa00e450a5_9366/Zapatilla_Busenitz_Pro_Negro_G48060_01_standard.jpg', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit fugit asperiores quas animi consequuntur nostrum commodi eligendi labore dolorem praesentium? Dolore nostrum aspernatur obcaecati hic mollitia consequatur iure quasi voluptas!', TRUE, 1, 1);
+  ('Adidas', 'Busenitz', 90, 'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/87e278ebf8cf4706a3bda7fa00e450a5_9366/Zapatilla_Busenitz_Pro_Negro_G48060_01_standard.jpg', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit fugit asperiores quas animi consequuntur nostrum commodi eligendi labore dolorem praesentium? Dolore nostrum aspernatur obcaecati hic mollitia consequatur iure quasi voluptas!', FALSE, 1, 1);
 
 INSERT
 INTO
   sneakers
   (brand, model, price, img, description, highlights, admin_id, category_id)
 VALUES
-  ('Nike', 'Air Jordan', 150, 'https://static.nike.com/a/images/t_PDP_1728_v1/39a3b844-cad2-4bf8-9176-7ce09b3e1f0f/air-jordan-1-elevate-low-se-zapatillas-6VS1X9.png', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit fugit asperiores quas animi consequuntur nostrum commodi eligendi labore dolorem praesentium? Dolore nostrum aspernatur obcaecati hic mollitia consequatur iure quasi voluptas!', FALSE, 1, 1);
+  ('Nike', 'Air Jordan', 150, 'https://static.nike.com/a/images/t_PDP_1728_v1/39a3b844-cad2-4bf8-9176-7ce09b3e1f0f/air-jordan-1-elevate-low-se-zapatillas-6VS1X9.png', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit fugit asperiores quas animi consequuntur nostrum commodi eligendi labore dolorem praesentium? Dolore nostrum aspernatur obcaecati hic mollitia consequatur iure quasi voluptas!', TRUE, 1, 1);
 
 INSERT
 INTO
