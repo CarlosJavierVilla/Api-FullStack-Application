@@ -36,7 +36,6 @@ public class SneakerService {
         return sneakerOptional.get();
     }
 
-    //filtrado desde backend que devuelve los sneakers que sean highlight
     public List<Sneaker> findAllHighLights(){
         var sneakers = sneakerRepository.findByHighlightsTrue();
         return sneakers;
@@ -45,12 +44,6 @@ public class SneakerService {
     public List<Sneaker> findSneakersByCategory(@PathVariable Long id){
         return sneakerRepository.findByCategory_Id(id);
     }
-
-    //public List<Sneaker> findKidSneakers(){
-        //return sneakerRepository.findByCategory_Id(2L);
-    //}
-
-
 
     public static boolean validateURL(String urlString){
         try{
@@ -86,11 +79,25 @@ public class SneakerService {
         return this.sneakerRepository.save(sneaker);
     }
 
-
     public void deleteById(Long sneakerId) {
         var admin = this.adminService.getAdminRegistered();
         var sneaker = sneakerRepository.findById(sneakerId).get();
         if (!admin.equals(sneaker.getAdmin())) throw new RuntimeException("Not authorized");
         this.sneakerRepository.deleteById(sneakerId);
+    }
+
+    public void editById(Long sneakerId, Sneaker newSneaker){
+        var admin = this.adminService.getAdminRegistered();
+        var sneaker = sneakerRepository.findById(sneakerId).orElseThrow(() -> new RuntimeException("Sneaker not found"));
+        if (!admin.equals(sneaker.getAdmin())) throw new RuntimeException("Not authorized");
+
+        sneaker.setBrand(newSneaker.getBrand());
+        sneaker.setModel(newSneaker.getModel());
+        sneaker.setPrice(newSneaker.getPrice());
+        sneaker.setImg(newSneaker.getImg());
+        sneaker.setDescription(newSneaker.getDescription());
+        sneaker.setHighlights(newSneaker.getHighlights());
+        sneaker.setCategory(newSneaker.getCategory());
+        sneakerRepository.save(sneaker);
     }
 }

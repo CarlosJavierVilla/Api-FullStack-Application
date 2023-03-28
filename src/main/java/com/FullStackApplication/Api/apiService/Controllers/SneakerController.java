@@ -46,7 +46,6 @@ public class SneakerController {
         return ResponseEntity.ok(this.sneakerService.findSneakersByCategory(id));
     }
 
-
     @PostMapping
     public ResponseEntity<Sneaker> addSneaker(@RequestBody SneakerRequest request){
         return ResponseEntity.ok(this.sneakerService.addSneaker(request));
@@ -57,7 +56,8 @@ public class SneakerController {
         this.sneakerService.deleteById(id);
     }
 
-
+    @PutMapping("/{id}")
+    public void editById(@PathVariable Long id, @RequestBody Sneaker changes){ this.sneakerService.editById(id, changes); }
 
 
 
