@@ -4,6 +4,7 @@ import com.FullStackApplication.Api.domain.Models.Sneaker;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Collection;
 import java.util.List;
@@ -14,7 +15,7 @@ public interface ISneakerRepository extends JpaRepository<Sneaker, Long> {
     List<Sneaker> findByHighlightsTrue();
 
     @Query("select s from Sneaker s where s.category.id = ?1")
-    List<Sneaker> findByCategory_Id(Long id);
+    List<Sneaker> findByCategory_Id(@PathVariable Long id);
 
 
 

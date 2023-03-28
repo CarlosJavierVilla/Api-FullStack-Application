@@ -5,6 +5,8 @@ import com.FullStackApplication.Api.domain.Models.Sneaker;
 import com.FullStackApplication.Api.infrastructure.Repositories.ICategoryRepository;
 import com.FullStackApplication.Api.infrastructure.Repositories.ISneakerRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -40,13 +42,13 @@ public class SneakerService {
         return sneakers;
     }
 
-    public List<Sneaker> findAdultSneakers(){
-        return sneakerRepository.findByCategory_Id(1L);
+    public List<Sneaker> findSneakersByCategory(@PathVariable Long id){
+        return sneakerRepository.findByCategory_Id(id);
     }
 
-    public List<Sneaker> findKidSneakers(){
-        return sneakerRepository.findByCategory_Id(2L);
-    }
+    //public List<Sneaker> findKidSneakers(){
+        //return sneakerRepository.findByCategory_Id(2L);
+    //}
 
 
 

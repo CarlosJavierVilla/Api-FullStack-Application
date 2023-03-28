@@ -41,14 +41,9 @@ public class SneakerController {
         return ResponseEntity.ok(this.sneakerService.findAllHighLights());
     }
 
-    @GetMapping("category/adult")
-    public ResponseEntity<List<Sneaker>> findAdultSneakers(){
-        return ResponseEntity.ok(this.sneakerService.findAdultSneakers());
-    }
-
-    @GetMapping("category/kid")
-    public ResponseEntity<List<Sneaker>> findKidSneakers(){
-        return ResponseEntity.ok(this.sneakerService.findKidSneakers());
+    @GetMapping("category/{id}")
+    public ResponseEntity<List<Sneaker>> findSneakersByCategory(@PathVariable Long id){
+        return ResponseEntity.ok(this.sneakerService.findSneakersByCategory(id));
     }
 
 
