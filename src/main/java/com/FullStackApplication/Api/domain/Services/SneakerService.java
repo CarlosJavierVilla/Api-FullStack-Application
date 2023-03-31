@@ -86,9 +86,10 @@ public class SneakerService {
         this.sneakerRepository.deleteById(sneakerId);
     }
 
-    public void editById(Long sneakerId, Sneaker newSneaker){
+    public void editById(Long sneakerId, SneakerRequest newSneaker){
         var admin = this.adminService.getAdminRegistered();
         var sneaker = sneakerRepository.findById(sneakerId).orElseThrow(() -> new RuntimeException("Sneaker not found"));
+        var category = categoryRepository.findById(newSneaker.getCategoryId()).orElseThrow(() -> new RuntimeException("Category not found"));
         if (!admin.equals(sneaker.getAdmin())) throw new RuntimeException("Not authorized");
 
         sneaker.setBrand(newSneaker.getBrand());
@@ -97,7 +98,7 @@ public class SneakerService {
         sneaker.setImg(newSneaker.getImg());
         sneaker.setDescription(newSneaker.getDescription());
         sneaker.setHighlights(newSneaker.getHighlights());
-        sneaker.setCategory(newSneaker.getCategory());
+        sneaker.setCategory(category);
         sneakerRepository.save(sneaker);
     }
 }

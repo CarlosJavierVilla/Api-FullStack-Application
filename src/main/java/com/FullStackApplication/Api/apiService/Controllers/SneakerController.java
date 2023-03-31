@@ -57,7 +57,9 @@ public class SneakerController {
     }
 
     @PutMapping("/{id}")
-    public void editById(@PathVariable Long id, @RequestBody Sneaker changes){ this.sneakerService.editById(id, changes); }
+    public void editById(@PathVariable Long id, @RequestBody SneakerRequest changes){
+        this.sneakerService.editById(id, changes);
+    }
 
 
 
