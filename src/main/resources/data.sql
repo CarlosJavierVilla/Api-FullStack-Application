@@ -2,9 +2,9 @@
 INSERT
 INTO
   admins
-  (name, email)
+  (name, email, password)
 VALUES
-  ('MarketingAdmin', 'galactica@gmail.com');
+  ('MarketingAdmin', 'galactica@gmail.com', 'password');
 
 --categories
 INSERT
