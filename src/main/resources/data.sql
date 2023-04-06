@@ -1,11 +1,3 @@
---admin
-INSERT
-INTO
-  admins
-  (name, email, password)
-VALUES
-  ('MarketingAdmin', 'galactica@gmail.com', 'password');
-
 --categories
 INSERT
 INTO
