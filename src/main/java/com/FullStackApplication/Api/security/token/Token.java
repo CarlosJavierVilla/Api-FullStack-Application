@@ -1,6 +1,6 @@
 package com.FullStackApplication.Api.security.token;
 
-import com.factoriaf5.auth6.security.user.User;
+import com.FullStackApplication.Api.security.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

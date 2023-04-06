@@ -1,6 +1,6 @@
 package com.FullStackApplication.Api.security.auth;
 
-import com.factoriaf5.auth6.security.user.Role;
+import com.FullStackApplication.Api.security.user.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class AuthenticationResponse {
 
   private String token;
-  private String firstName;
+  private String name;
   private Role role;
   private String email;
 }

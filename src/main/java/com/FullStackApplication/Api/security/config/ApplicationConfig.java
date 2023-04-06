@@ -1,6 +1,6 @@
 package com.FullStackApplication.Api.security.config;
 
-import com.factoriaf5.auth6.security.user.UserRepository;
+import com.FullStackApplication.Api.security.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
