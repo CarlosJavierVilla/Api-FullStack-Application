@@ -1,12 +1,12 @@
 package com.FullStackApplication.Api.security.auth;
 
-import com.factoriaf5.auth6.security.config.JwtService;
-import com.factoriaf5.auth6.security.token.Token;
-import com.factoriaf5.auth6.security.token.TokenRepository;
-import com.factoriaf5.auth6.security.token.TokenType;
-import com.factoriaf5.auth6.security.user.Role;
-import com.factoriaf5.auth6.security.user.User;
-import com.factoriaf5.auth6.security.user.UserRepository;
+import com.FullStackApplication.Api.security.config.JwtService;
+import com.FullStackApplication.Api.security.token.Token;
+import com.FullStackApplication.Api.security.token.TokenRepository;
+import com.FullStackApplication.Api.security.token.TokenType;
+import com.FullStackApplication.Api.security.user.Role;
+import com.FullStackApplication.Api.security.user.User;
+import com.FullStackApplication.Api.security.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,8 +24,7 @@ public class AuthenticationService {
 
   public AuthenticationResponse register(RegisterRequest request) {
     var user = User.builder()
-        .firstname(request.getFirstname())
-        .lastname(request.getLastname())
+        .name(request.getName())
         .email(request.getEmail())
         .password(passwordEncoder.encode(request.getPassword()))
         .role(Role.USER)
@@ -35,7 +34,7 @@ public class AuthenticationService {
     saveUserToken(savedUser, jwtToken);
     return AuthenticationResponse.builder()
         .token(jwtToken)
-            .firstName(user.getFirstname())
+            .name(user.getName())
             .email(user.getEmail())
             .role(user.getRole())
         .build();
@@ -55,7 +54,7 @@ public class AuthenticationService {
     saveUserToken(user, jwtToken);
     return AuthenticationResponse.builder()
         .token(jwtToken)
-            .firstName(user.getFirstname())
+            .name(user.getName())
             .email(user.getEmail())
             .role(user.getRole())
         .build();

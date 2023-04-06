@@ -1,9 +1,9 @@
 package com.FullStackApplication.Api.security.auth;
 
 
-import com.factoriaf5.auth6.security.user.Role;
-import com.factoriaf5.auth6.security.user.User;
-import com.factoriaf5.auth6.security.user.UserRepository;
+import com.FullStackApplication.Api.security.user.Role;
+import com.FullStackApplication.Api.security.user.User;
+import com.FullStackApplication.Api.security.user.UserRepository;
 import jakarta.annotation.PostConstruct;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -25,7 +25,7 @@ public class InitUsers {
     public void initUsers() {
         var user = User.builder()
                 .email("admin@admin.com")
-                .firstname("Admin")
+                .name("Admin")
                 .password(passwordEncoder.encode("password"))
                 .role(Role.ADMIN)
                 .build();
@@ -37,7 +37,7 @@ public class InitUsers {
         authenticationService.authenticate(authReq);
         var registerRequest = RegisterRequest.builder()
                 .email("user@user.com")
-                .firstname("User")
+                .name("User")
                 .password("password")
                 .build();
         authenticationService.register(registerRequest);

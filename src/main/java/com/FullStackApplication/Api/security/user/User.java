@@ -1,6 +1,6 @@
 package com.FullStackApplication.Api.security.user;
 
-import com.factoriaf5.auth6.security.token.Token;
+import com.FullStackApplication.Api.security.token.Token;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,14 +18,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "_user")
+@Table(name = "users")
 public class User implements UserDetails {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  private String firstname;
-  private String lastname;
+  private String name;
   private String email;
   private String password;
 

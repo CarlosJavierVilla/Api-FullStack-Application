@@ -1,6 +1,6 @@
 package com.FullStackApplication.Api.security.config;
 
-import com.factoriaf5.auth6.security.token.TokenRepository;
+import com.FullStackApplication.Api.security.token.TokenRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
