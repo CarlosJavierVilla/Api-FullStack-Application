@@ -3,6 +3,7 @@ package com.FullStackApplication.Api.domain.Services;
 import com.FullStackApplication.Api.domain.Models.Admin;
 import com.FullStackApplication.Api.infrastructure.Repositories.IAdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

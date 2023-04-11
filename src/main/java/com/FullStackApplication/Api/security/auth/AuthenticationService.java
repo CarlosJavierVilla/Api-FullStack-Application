@@ -23,6 +23,9 @@ public class AuthenticationService {
   private final AuthenticationManager authenticationManager;
 
   public AuthenticationResponse register(RegisterRequest request) {
+    if (repository.findByEmail(request.getEmail()).isPresent()) {
+      throw new RuntimeException("This email already exist in our Data Base. Please try again.");
+    }
     var user = User.builder()
         .name(request.getName())
         .email(request.getEmail())
