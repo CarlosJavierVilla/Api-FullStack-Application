@@ -7,6 +7,7 @@ import com.FullStackApplication.Api.domain.Models.Sneaker;
 import com.FullStackApplication.Api.domain.Services.SneakerService;
 import com.FullStackApplication.Api.infrastructure.Repositories.ICategoryRepository;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -46,6 +47,7 @@ public class SneakerController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Sneaker> addSneaker(@RequestBody SneakerRequest request){
         return ResponseEntity.ok(this.sneakerService.addSneaker(request));
     }

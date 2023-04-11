@@ -1,18 +1,3 @@
---users
-INSERT
-INTO
-  _user
-  (name, email, password, role)
-VALUES
-  ('admin', 'admin@admin.com', 'password', 'admin');
-
-INSERT
-INTO
-  _user
-  (name, email, password, role)
-VALUES
-  ('user', 'user@user.com', 'password', 'user');
-
 --categories
 INSERT
 INTO
