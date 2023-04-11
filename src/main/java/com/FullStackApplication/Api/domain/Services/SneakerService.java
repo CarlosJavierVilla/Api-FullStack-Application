@@ -59,7 +59,7 @@ public class SneakerService {
     public Sneaker addSneaker(SneakerRequest request) {
         var category = categoryRepository.findById(request.getCategoryId())
                 .orElseThrow(() -> new RuntimeException("This category doesn't exist. Please try again."));
-        var admin = this.adminService.getAdminRegistered();
+        //var admin = this.adminService.getAdminRegistered();
         var sneaker = new Sneaker();
         var urlDefault = "https://static.thenounproject.com/png/1554489-200.png";
 
@@ -75,22 +75,22 @@ public class SneakerService {
         sneaker.setDescription(request.getDescription());
         sneaker.setHighlights(request.getHighlights());
         sneaker.setCategory(category);
-        sneaker.setAdmin(admin);
+        //sneaker.setAdmin(admin);
         return this.sneakerRepository.save(sneaker);
     }
 
     public void deleteById(Long sneakerId) {
-        var admin = this.adminService.getAdminRegistered();
+        //var admin = this.adminService.getAdminRegistered();
         var sneaker = sneakerRepository.findById(sneakerId).get();
-        if (!admin.equals(sneaker.getAdmin())) throw new RuntimeException("Not authorized");
+        //if (!admin.equals(sneaker.getAdmin())) throw new RuntimeException("Not authorized");
         this.sneakerRepository.deleteById(sneakerId);
     }
 
     public void editById(Long sneakerId, SneakerRequest newSneaker){
-        var admin = this.adminService.getAdminRegistered();
+        //var admin = this.adminService.getAdminRegistered();
         var sneaker = sneakerRepository.findById(sneakerId).orElseThrow(() -> new RuntimeException("Sneaker not found"));
         var category = categoryRepository.findById(newSneaker.getCategoryId()).orElseThrow(() -> new RuntimeException("Category not found"));
-        if (!admin.equals(sneaker.getAdmin())) throw new RuntimeException("Not authorized");
+        //if (!admin.equals(sneaker.getAdmin())) throw new RuntimeException("Not authorized");
 
         sneaker.setBrand(newSneaker.getBrand());
         sneaker.setModel(newSneaker.getModel());
